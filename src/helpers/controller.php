@@ -1,12 +1,12 @@
 <?php
 
-use Config\App;
+use Config\AppConfig;
 
 function view(string $view, array $data = []){
     foreach($data as $key=>$d){
         $$key = $d;
     }
-    include(App::view_dir . "\\" . $view . ".php");
+    include(AppConfig::view_dir . "\\" . $view . ".php");
     exit;
 }
 

@@ -26,12 +26,13 @@ Router::controller("/logout", "GET", UserController::class, "logout");
 
 
 
+Router::controller("/ad", "GET", AdController::class, "show");
 Router::controller("/category", "GET", AdController::class, "getByCategory");
 Router::controller("/paginate", "GET", AdController::class, "paginate");
 
 
 
-Router::controller("/dashboard", "GET", UserController::class, "logout");
+Router::controller("/dashboard", "GET", UserController::class, "dashboard");
 
 
 

@@ -5,7 +5,12 @@ namespace App\Controllers;
 use App\Models\Ad;
 
 class AdController{
-
+    
+    public function show($request){
+        echo "<pre>";
+        print_r(Ad::where(["id" => $request["id"]]));
+        echo "</pre>";
+    }
     public function create(){
         Ad::new([
             "title" => "başlık",
@@ -33,11 +38,17 @@ class AdController{
         }
     }
     public function paginate($request){
-        $per_page = 10;
+        $per_page = 2;
         $page = $request["page"];
         $sql = "select * from ads order by created_at desc LIMIT " . $per_page . " OFFSET " . ($page-1) * $per_page;
-        echo "<pre>";
-        print_r(Ad::select($sql));
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r(Ad::select($sql));
+        // echo "</pre>";
+        echo json_encode([
+            "count" => Ad::select("select count(*) as count from ads")[0]["count"],
+            "perPage" => $per_page,
+            "currentPage" => (integer)$page,
+            "data" => Ad::select($sql)
+        ]);
     }
 }

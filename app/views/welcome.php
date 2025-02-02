@@ -12,12 +12,13 @@ use Core\Session;
     <div class="account">
         <?php if(User::hasLoggedIn()){ ?>
     
-            <div class="user"><?php echo Session::get("user_email")."#".Session::get("user_id") ?></div>
+            <div class="user"><a href="dashboard"><?php echo Session::get("user_email") ?></a></div>
             <a href="logout">logout</a>
     
         <?php }else{ ?>
     
             <a href="/login">login</a>
+            <a href="/signup">signup</a>
     
         <?php } ?>
     </div>
@@ -43,8 +44,13 @@ use Core\Session;
         <div class="options">
             <div class="option selected">Son yüklenenler</div>
         </div>
-        <div class="ads" id="ads"></div>
+        <div class="ads-container">
+            <div class="ads" id="ads"></div>
+            <div class="page-numbers" id="page-numbers">
+            </div>
+        </div>
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="js/welcome.js"></script>

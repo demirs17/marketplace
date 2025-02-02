@@ -39,4 +39,10 @@ class UserController extends Controller{
         Session::destroy();
         redirect("/");
     }
+
+    public function dashboard(){
+        $account_details;
+        $ads;
+        view("dashboard");
+    }
 }
